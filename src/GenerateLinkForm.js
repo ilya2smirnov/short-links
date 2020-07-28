@@ -4,7 +4,7 @@ import LinkInput from './LinkInput'
 import generateShortLink from "./ShortLinkGenerator";
 import LastLink from "./LastLink";
 
-function App() {
+function GenerateLinkForm() {
 
   let [lastLink, setLastLink] = useState({shown: false, userLink: "", shortLink: ""});
   let lastLinkRef = useRef(lastLink);
@@ -34,4 +34,4 @@ function App() {
   );
 }
 
-export default App;
+export default GenerateLinkForm;
