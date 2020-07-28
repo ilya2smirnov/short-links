@@ -1,13 +1,11 @@
-import React, {useContext, useState} from "react";
-import AppContext from "./AppContext";
+import React, {useState} from "react";
 
-function LinkInput() {
+function LinkInput(props) {
   let [inputLink, setInputLink] = useState("");
-  let context = useContext(AppContext);
 
   function onFormClick(e) {
     e.preventDefault();
-    context.onClickCreateLink(inputLink);
+    props.onClickCreateLink(inputLink);
     setInputLink("")
   }
 

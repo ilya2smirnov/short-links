@@ -2,7 +2,6 @@ import React, {useRef, useState} from 'react';
 import './App.css';
 import LinkInput from './LinkInput'
 import generateShortLink from "./ShortLinkGenerator";
-import AppContext from './AppContext'
 import LastLink from "./LastLink";
 
 function App() {
@@ -27,13 +26,11 @@ function App() {
   }
 
   return (
-    <AppContext.Provider value={{onClickCreateLink, lastLink}}>
-      <div className="App">
-        <h1>Hello world!</h1>
-        <LinkInput />
-        {lastLink.shown ? <LastLink /> : null}
-      </div>
-    </AppContext.Provider>
+    <div className="App">
+      <h1>Hello world!</h1>
+      <LinkInput onClickCreateLink={onClickCreateLink}/>
+      {lastLink.shown ? <LastLink lastLink={lastLink}/> : null}
+    </div>
   );
 }
 

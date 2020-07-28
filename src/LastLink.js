@@ -1,9 +1,7 @@
-import React, {useContext} from "react";
-import AppContext from "./AppContext";
+import React from "react";
 
-function LastLink() {
-  let context = useContext(AppContext);
-  return <p>{context.lastLink.shortLink}</p>;
+function LastLink(props) {
+  return <p>{props.lastLink.shortLink}</p>;
 }
 
 export default LastLink;
