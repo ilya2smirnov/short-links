@@ -9,7 +9,6 @@ function LinkInput() {
     e.preventDefault();
     context.onClickCreateLink(inputLink);
     setInputLink("")
-    console.log(e);
   }
 
   function onInputChanged(e) {
