@@ -1,10 +1,10 @@
 import React, {useRef, useState} from 'react';
-import './App.css';
+import './GenerateLinkForm.css';
 import LinkInput from './LinkInput'
 import generateShortLink from "./ShortLinkGenerator";
 import LastLink from "./LastLink";
 
-function App() {
+function GenerateLinkForm() {
 
   let [lastLink, setLastLink] = useState({shown: false, userLink: "", shortLink: ""});
   let lastLinkRef = useRef(lastLink);
@@ -26,7 +26,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="GenerateLinkForm">
       <h1>Hello world!</h1>
       <LinkInput onClickCreateLink={onClickCreateLink}/>
       {lastLink.shown ? <LastLink lastLink={lastLink}/> : null}
@@ -34,4 +34,4 @@ function App() {
   );
 }
 
-export default App;
+export default GenerateLinkForm;
