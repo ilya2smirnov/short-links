@@ -5,6 +5,13 @@ import generateShortLink from "./ShortLinkGenerator";
 import LastLink from "./LastLink";
 import LinkList from "./LinkList";
 
+const styles = {
+  ".generateLinkForm" : {
+    width: "50%",
+    margin: "0 auto",
+  }
+}
+
 function GenerateLinkForm() {
 
   let [lastLink, setLastLink] = useState({shown: false, userLink: "", shortLink: ""});
@@ -27,7 +34,7 @@ function GenerateLinkForm() {
   }
 
   return (
-    <div className="GenerateLinkForm">
+    <div className="generateLinkForm" style={styles[".generateLinkForm"]}>
       <h1>Generate link here</h1>
       <LinkInput onClickCreateLink={onClickCreateLink}/>
       {lastLink.shown ? <LastLink lastLink={lastLink}/> : null}

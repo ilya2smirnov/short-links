@@ -3,7 +3,6 @@ import React from "react";
 const styles = {
   li: {
     display: "flex",
-    width: "30%",
     justifyContent: "space-between",
   }
 }
