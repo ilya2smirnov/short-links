@@ -16,6 +16,7 @@ const styles = {
 function GenerateLinkForm() {
 
   let [lastLink, setLastLink] = useState({shown: false, userLink: "", shortLink: ""});
+  let [links, setLinks] = useState([{_id: "id1", shortLink: "Scfg4w2", fullLink: "http://yandex.ru", host: "http://localhost:3000"}]);
   let lastLinkRef = useRef(lastLink);
   lastLinkRef.current = lastLink;
 
@@ -33,7 +34,10 @@ function GenerateLinkForm() {
       }
     }, 3000);
 
-    addNewLinkAndGetCurrentList(userLink);
+    addNewLinkAndGetCurrentList(userLink)
+      .then(res => {
+        setLinks(res['Link list']);
+      });
   }
 
   return (
@@ -41,7 +45,7 @@ function GenerateLinkForm() {
       <h1>Generate link here</h1>
       <LinkInput onClickCreateLink={onClickCreateLink}/>
       {lastLink.shown ? <LastLink lastLink={lastLink}/> : null}
-      <LinkList />
+      <LinkList links={links}/>
     </div>
   );
 }
