@@ -3,6 +3,7 @@ import './GenerateLinkForm.css';
 import LinkInput from './LinkInput'
 import generateShortLink from "./ShortLinkGenerator";
 import LastLink from "./LastLink";
+import LinkList from "./LinkList";
 
 function GenerateLinkForm() {
 
@@ -27,9 +28,10 @@ function GenerateLinkForm() {
 
   return (
     <div className="GenerateLinkForm">
-      <h1>Hello world!</h1>
+      <h1>Generate link here</h1>
       <LinkInput onClickCreateLink={onClickCreateLink}/>
       {lastLink.shown ? <LastLink lastLink={lastLink}/> : null}
+      <LinkList />
     </div>
   );
 }
