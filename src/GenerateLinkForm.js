@@ -20,7 +20,7 @@ function GenerateLinkForm() {
         console.log("Hide link:", newLastLink.shortLink);
         setLastLink({...newLastLink, shown: false});
       } else {
-        console.log("Skip hiding link:", newLastLink.shortLink, "because currect link is", lastLinkRef.current.shortLink);
+        console.log("Skip hiding link:", newLastLink.shortLink, "because current link is", lastLinkRef.current.shortLink);
       }
     }, 3000);
   }
