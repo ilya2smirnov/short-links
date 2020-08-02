@@ -1,10 +1,10 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './GenerateLinkForm.css';
 import LinkInput from './LinkInput'
 import generateShortLink from "./ShortLinkGenerator";
 import LastLink from "./LastLink";
 import LinkList from "./LinkList";
-import addNewLinkAndGetCurrentList from "./ApiHandler"
+import {addNewLink, getCurrentList} from "./ApiHandler"
 
 const styles = {
   ".generateLinkForm" : {
@@ -16,28 +16,40 @@ const styles = {
 function GenerateLinkForm() {
 
   let [lastLink, setLastLink] = useState({shown: false, userLink: "", shortLink: ""});
-  let [links, setLinks] = useState([{_id: "id1", shortLink: "Scfg4w2", fullLink: "http://yandex.ru", host: "http://localhost:3000"}]);
+  let [links, setLinks] = useState([{mock: true, _id: "id1", shortLink: "Scfg4w2", fullLink: "http://yandex.ru"
+    , host: "http://localhost:3000"}]);
   let lastLinkRef = useRef(lastLink);
   lastLinkRef.current = lastLink;
 
+  useEffect(() => {
+    if (links.length && links[0].mock) {
+      getCurrentList()
+        .then(res => {
+          setLinks(res);
+        })
+    }
+  });
+
   function onClickCreateLink(userLink) {
-    let newLastLink = {shown: true, userLink: userLink, shortLink: generateShortLink(userLink)};
-    setLastLink(newLastLink)
-    lastLinkRef.current = newLastLink;
-
-    setTimeout(() => {
-      if (newLastLink === lastLinkRef.current) {
-        console.log("Hide link:", newLastLink.shortLink);
-        setLastLink({...newLastLink, shown: false});
-      } else {
-        console.log("Skip hiding link:", newLastLink.shortLink, "because current link is", lastLinkRef.current.shortLink);
-      }
-    }, 3000);
-
-    addNewLinkAndGetCurrentList(userLink)
+    addNewLink(userLink)
       .then(res => {
-        setLinks(res['Link list']);
+        let newLastLink = {shown: true, userLink: res.fullLink, shortLink: res.host + "/" + res.shortLink};
+        setLastLink(newLastLink)
+        lastLinkRef.current = newLastLink;
+
+        setTimeout(() => {
+          if (newLastLink === lastLinkRef.current) {
+            console.log("Hide link:", newLastLink.shortLink);
+            setLastLink({...newLastLink, shown: false});
+          } else {
+            console.log("Skip hiding link:", newLastLink.shortLink, "because current link is", lastLinkRef.current.shortLink);
+          }
+        }, 3000);
       });
+    getCurrentList()
+      .then(res => {
+        setLinks(res);
+      })
   }
 
   return (
