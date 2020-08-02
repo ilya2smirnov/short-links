@@ -3,13 +3,13 @@ import axios from 'axios'
 async function addNewLinkAndGetCurrentList(fullLink) {
   const dataAdd = {
     user: 'max1',
-    password: 'max3000',
+    password: 'maxim3000',
     fullLink: fullLink,
   };
 
   const dataGet = {
     user: 'max1',
-    password: 'max3000',
+    password: 'maxim3000',
   };
 
   return axios.post('/api/short-links/add', dataAdd)
