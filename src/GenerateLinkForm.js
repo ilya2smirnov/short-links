@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './GenerateLinkForm.css';
 import LinkInput from './LinkInput'
-import generateShortLink from "./ShortLinkGenerator";
 import LastLink from "./LastLink";
 import LinkList from "./LinkList";
 import {addNewLink, getCurrentList} from "./ApiHandler"
