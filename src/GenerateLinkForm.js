@@ -4,6 +4,7 @@ import LinkInput from './LinkInput'
 import generateShortLink from "./ShortLinkGenerator";
 import LastLink from "./LastLink";
 import LinkList from "./LinkList";
+import addNewLinkAndGetCurrentList from "./ApiHandler"
 
 const styles = {
   ".generateLinkForm" : {
@@ -31,6 +32,8 @@ function GenerateLinkForm() {
         console.log("Skip hiding link:", newLastLink.shortLink, "because current link is", lastLinkRef.current.shortLink);
       }
     }, 3000);
+
+    addNewLinkAndGetCurrentList(userLink);
   }
 
   return (
