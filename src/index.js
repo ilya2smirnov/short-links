@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import GenerateLinkForm from './GenerateLinkForm';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <GenerateLinkForm />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
