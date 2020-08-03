@@ -4,16 +4,15 @@ import * as SignInStatus from "./signInStatus";
 
 function Nav(props) {
   let [userPass, setUserPass]
-    = useState([SignInStatus.username, SignInStatus.password]);
+    = useState({username: SignInStatus.username, password: SignInStatus.password});
 
-  let setUserPassCallback = function (user, pass) {
-    console.log("setUserPass", user, pass);
-    SignInStatus.setUsername(user);
-    SignInStatus.setPassword(pass);
-    setUserPass([user, pass]);
-  }
-
-  props.userPassSetterWrapper.set = setUserPassCallback;
+  props.userPass.set = function (username, password) {
+    console.log("setUserPass", username, password);
+    SignInStatus.setUsername(username);
+    SignInStatus.setPassword(password);
+    setUserPass({username, password});
+  };
+  props.userPass.get = () => userPass;
 
   return (
     <nav>

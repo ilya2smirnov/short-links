@@ -4,6 +4,7 @@ import LinkInput from './LinkInput'
 import LastLink from "./LastLink";
 import LinkList from "./LinkList";
 import {addNewLink, getCurrentList} from "./ApiHandler"
+import {useHistory} from "react-router";
 
 const styles = {
   ".generateLinkForm" : {
@@ -12,7 +13,8 @@ const styles = {
   }
 }
 
-function GenerateLinkForm() {
+function GenerateLinkForm(props) {
+  let history = useHistory();
 
   let [lastLink, setLastLink] = useState({shown: false, userLink: "", shortLink: ""});
   let [links, setLinks] = useState([{mock: true, _id: "id1", shortLink: "Scfg4w2", fullLink: "http://yandex.ru"
@@ -24,10 +26,17 @@ function GenerateLinkForm() {
     if (links.length && links[0].mock) {
       getCurrentList()
         .then(res => {
+          console.log("set links:", res);
           setLinks(res);
-        })
+        }).catch(err => {
+          console.log(err);
+      })
     }
   });
+
+  if (!props.userPass.get().username) {
+    history.push("/");
+  }
 
   function onClickCreateLink(userLink) {
     addNewLink(userLink)

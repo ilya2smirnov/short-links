@@ -1,7 +1,7 @@
 import React from "react";
 
 function Home(props) {
-  props.userPassSetterWrapper.set("", "");
+  props.userPass.set("", "");
   return (
     <h1>Home</h1>
   );

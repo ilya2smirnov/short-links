@@ -12,23 +12,23 @@ import Nav from "./Nav"
 import Home from "./Home"
 
 function App() {
-  let userPassSetterWrapper = {};
+  let userPass = {};
   return (
     <Router>
       <div>
-      <Nav userPassSetterWrapper={userPassSetterWrapper}/>
+      <Nav userPass={userPass}/>
       <Switch>
         <Route path="/sign-in">
-          <SignIn userPassSetterWrapper={userPassSetterWrapper}/>
+          <SignIn userPass={userPass}/>
         </Route>
         <Route path="/sign-up">
           <SignUp />
         </Route>
         <Route path="/links">
-          <GenerateLinkForm />
+          <GenerateLinkForm userPass={userPass}/>
         </Route>
         <Route path="/">
-          <Home userPassSetterWrapper={userPassSetterWrapper}/>
+          <Home userPass={userPass}/>
         </Route>
       </Switch>
       </div>

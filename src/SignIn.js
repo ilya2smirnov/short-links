@@ -13,7 +13,7 @@ function SignIn(props) {
     console.log(passwordInput.current.value)
     checkCreds(usernameInput.current.value, passwordInput.current.value)
       .then(() => {
-        props.userPassSetterWrapper.set(usernameInput.current.value, passwordInput.current.value);
+        props.userPass.set(usernameInput.current.value, passwordInput.current.value);
         history.push("/links");
       }).catch(err => {
         console.log(err);

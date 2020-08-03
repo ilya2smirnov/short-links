@@ -7,9 +7,13 @@ async function getCurrentList(fullLink) {
       .then(res => {
         console.log(`Get links: ${res.status}`);
         console.log('Get links resp: ', res.data);
+        if (typeof(res.data) !== "object" || !("Link list" in res.data)) {
+          throw res.data;
+        }
         return res.data["Link list"];
       }).catch((err) => {
         console.error(err);
+        throw err;
       });
 }
 
