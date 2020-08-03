@@ -14,13 +14,17 @@ function Nav(props) {
   };
   props.userPass.get = () => userPass;
 
+  function onSignOutClick(event) {
+    props.userPass.set("", "");
+  }
+
   return (
     <nav>
       <ul>
         <li><Link to="/">Home</Link></li>
         {SignInStatus.username ? null : <li><Link to="/sign-in">Sign in</Link></li>}
         {SignInStatus.username ? null : <li><Link to="/sign-up">Sign up</Link></li>}
-        {SignInStatus.username ? <li><Link to="/sign-out">Sign out</Link></li> : null}
+        {SignInStatus.username ? <li><Link onClick={onSignOutClick} to="/sign-out">Sign out</Link></li> : null}
       </ul>
     </nav>
   )
