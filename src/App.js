@@ -5,36 +5,34 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import * as SignInStatus from "./signInStatus";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import GenerateLinkForm from "./GenerateLinkForm";
+import Nav from "./Nav"
+import Home from "./Home"
 
 function App() {
-  SignInStatus.setUsername("");
-  SignInStatus.setPassword("");
+  let userPassSetterWrapper = {};
   return (
     <Router>
       <div>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          {SignInStatus.username ? null : <li><Link to="/sign-in">Sign in</Link></li>}
-          {SignInStatus.username ? null : <li><Link to="/sign-up">Sign up</Link></li>}
-          {SignInStatus.username ? <li><Link to="/sign-out">Sign out</Link></li> : null}
-        </ul>
-      </nav>
-
+      <Nav userPassSetterWrapper={userPassSetterWrapper}/>
       <Switch>
         <Route path="/sign-in">
-          <SignIn />
+          <SignIn userPassSetterWrapper={userPassSetterWrapper}/>
         </Route>
         <Route path="/sign-up">
           <SignUp />
         </Route>
+        <Route path="/links">
+          <GenerateLinkForm />
+        </Route>
+        <Route path="/">
+          <Home userPassSetterWrapper={userPassSetterWrapper}/>
+        </Route>
       </Switch>
       </div>
     </Router>
-
   );
 }
 

@@ -1,7 +1,5 @@
 import axios from 'axios';
-
-let user = "max1";
-let password = "maxim3000";
+import {username as user, password} from "./signInStatus";
 
 async function getCurrentList(fullLink) {
   const dataGet = { user, password };
@@ -12,6 +10,21 @@ async function getCurrentList(fullLink) {
         return res.data["Link list"];
       }).catch((err) => {
         console.error(err);
+      });
+}
+
+async function checkCreds(user, password) {
+  const dataGet = { user, password };
+    return axios.post('/api/user/get', dataGet)
+      .then(res => {
+        console.log(`Get user: ${res.status}`);
+        console.log('Get user resp: ', res.data);
+        if (typeof(res.data) != "object" || !("Found user" in res.data)) {
+          throw res.data;
+        }
+      }).catch((err) => {
+        console.error(err);
+        throw err;
       });
 }
 
@@ -28,5 +41,4 @@ async function addNewLink(fullLink) {
     });
 }
 
-export {getCurrentList};
-export {addNewLink};
+export {getCurrentList, addNewLink, checkCreds};
