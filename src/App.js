@@ -22,7 +22,7 @@ function App() {
           <SignIn userPass={userPass}/>
         </Route>
         <Route path="/sign-up">
-          <SignUp />
+          <SignUp userPass={userPass}/>
         </Route>
         <Route path="/links">
           <GenerateLinkForm userPass={userPass}/>
