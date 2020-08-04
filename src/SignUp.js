@@ -25,10 +25,10 @@ function SignUp(props) {
       <h1>Sign up</h1>
       <form onSubmit={formOnSubmit}>
         <p>Login</p>
-        <input name="Login" type="text" ref={usernameInput}/>
+        <p><input name="Login" type="text" ref={usernameInput}/></p>
         <p>Password</p>
-        <input name="Password" type="text" ref={passwordInput}/>
-        <input type="submit" value="Sign up"/>
+        <p><input name="Password" type="text" ref={passwordInput}/></p>
+        <p><input type="submit" value="Sign up"/></p>
       </form>
     </>
   )

@@ -24,11 +24,11 @@ function SignIn(props) {
     <>
       <h1>Sign in</h1>
       <form onSubmit={onSubmit}>
-        <div>Login</div>
-        <input type="text" ref={usernameInput}/>
-        <div>Password</div>
-        <input type="text" ref={passwordInput}/>
-        <input type="submit" value="Sign in"/>
+        <p>Login</p>
+        <p><input type="text" ref={usernameInput}/></p>
+        <p>Password</p>
+        <p><input type="text" ref={passwordInput}/></p>
+        <p><input type="submit" value="Sign in"/></p>
       </form>
     </>
   )
