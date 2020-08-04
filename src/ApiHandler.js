@@ -45,4 +45,21 @@ async function addNewLink(fullLink) {
     });
 }
 
-export {getCurrentList, addNewLink, checkCreds};
+async function addNewUser(user, password) {
+  const dataAdd = { user, password };
+
+  return axios.post('/api/user/add', dataAdd)
+    .then((res) => {
+      console.log(`User added: ${res.status}`);
+      console.log('User added resp: ', res.data);
+      if (typeof(res.data) === "object" && ("Added user" in res.data)) {
+        return res.data["Added user"];
+      }
+      throw res.data;
+    }).catch((err) => {
+      console.error(err);
+      throw err;
+    });
+}
+
+export {getCurrentList, addNewLink, checkCreds, addNewUser};
