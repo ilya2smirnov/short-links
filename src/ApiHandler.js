@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {username as user, password} from "./signInStatus";
 
-async function getCurrentList(fullLink) {
+async function getCurrentList() {
   const dataGet = { user, password };
     return axios.post('/api/short-links/get', dataGet)
       .then(res => {
