@@ -3,16 +3,8 @@ import {Link} from "react-router-dom";
 import * as SignInStatus from "./signInStatus";
 
 function Nav(props) {
-  let [userPass, setUserPass]
-    = useState({username: SignInStatus.username, password: SignInStatus.password});
-
-  props.userPass.set = function (username, password) {
-    console.log("setUserPass", username, password);
-    SignInStatus.setUsername(username);
-    SignInStatus.setPassword(password);
-    setUserPass({username, password});
-  };
-  props.userPass.get = () => userPass;
+  let [state, setState] = useState({});
+  props.navState.set = setState;
 
   function onSignOutClick(event) {
     props.userPass.set("", "");

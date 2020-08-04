@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,25 +10,40 @@ import SignUp from "./SignUp";
 import GenerateLinkForm from "./GenerateLinkForm";
 import Nav from "./Nav"
 import Home from "./Home"
+import * as SignInStatus from "./signInStatus";
 
 function App() {
-  let userPass = {};
+  let [state] = useState({homeState: {},
+    userPass: {}, navState: {}});
+
+  state.userPass.set = function (username, password) {
+    console.log("setUserPass", username, password);
+    SignInStatus.setUsername(username);
+    SignInStatus.setPassword(password);
+    state.navState.set({username});
+    state.homeState.set({username});
+  };
+
+  state.userPass.get = () => {
+    return {username: SignInStatus.username, password: SignInStatus.password};
+  };
+
   return (
     <Router>
       <div>
-      <Nav userPass={userPass}/>
+      <Nav userPass={state.userPass} navState={state.navState} />
       <Switch>
         <Route path="/sign-in">
-          <SignIn userPass={userPass}/>
+          <SignIn userPass={state.userPass}/>
         </Route>
         <Route path="/sign-up">
-          <SignUp userPass={userPass}/>
+          <SignUp userPass={state.userPass}/>
         </Route>
         <Route path="/links">
-          <GenerateLinkForm userPass={userPass}/>
+          <GenerateLinkForm userPass={state.userPass}/>
         </Route>
         <Route path="/">
-          <Home userPass={userPass}/>
+          <Home userPass={state.userPass} homeState={state.homeState}/>
         </Route>
       </Switch>
       </div>
