@@ -1,5 +1,5 @@
 import React, {useRef} from "react";
-import {checkCreds} from "./ApiHandler"
+import {checkCreds} from "../ApiHandler"
 import { useHistory } from "react-router-dom";
 
 function SignIn(props) {

@@ -1,6 +1,6 @@
 import React, {useRef} from "react";
 import {useHistory} from "react-router-dom";
-import {addNewUser} from "./ApiHandler";
+import {addNewUser} from "../ApiHandler";
 
 function SignUp(props) {
   let history = useHistory();

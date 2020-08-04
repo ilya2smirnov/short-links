@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import * as SignInStatus from "./signInStatus";
+import * as SignInStatus from "../signInStatus";
 
 function Nav(props) {
   let [state, setState] = useState({});

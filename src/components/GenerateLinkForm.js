@@ -1,9 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react';
-import './GenerateLinkForm.css';
+import '../styles/GenerateLinkForm.css';
 import LinkInput from './LinkInput'
 import LastLink from "./LastLink";
 import LinkList from "./LinkList";
-import {addNewLink, getCurrentList} from "./ApiHandler"
+import {addNewLink, getCurrentList} from "../ApiHandler"
 import {useHistory} from "react-router";
 
 const styles = {

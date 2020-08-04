@@ -10,7 +10,7 @@ import SignUp from "./SignUp";
 import GenerateLinkForm from "./GenerateLinkForm";
 import Nav from "./Nav"
 import Home from "./Home"
-import * as SignInStatus from "./signInStatus";
+import * as SignInStatus from "../signInStatus";
 
 function App() {
   let [state] = useState({homeState: {},
